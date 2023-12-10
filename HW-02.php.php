@@ -48,48 +48,26 @@ $example_persons_array = [
 
 ];
 
-
-function getPartsFromFullname(){
-    global $example_persons_array;
-    foreach ($example_persons_array as $fullnameAndJob){
-        $expd = explode(' ',$fullnameAndJob['fullname']);
-        $surname = $expd[0];
-        $name = $expd[1];
-        $patr = $expd[2];
-        echo "Фамилия: " . $surname . "<br>";
-        echo "Имя: " . $name . "<br>";
-        echo "Отчество: " . $patr . "<br>";
-        echo "<em>---------</em><br>";
-    };
+function getPartsFromFullname($fullname){
+    $expl = explode(" ",$fullname);
+    $sprtd = [
+        'surname' => $expl[0],
+        'name' => $expl[1],
+        'patr' => $expl[2],
+    ];
+    return $sprtd;
 };
 
-getPartsFromFullname();
-
-
-function getFullnameFromParts(){
-    global $example_persons_array;
-    foreach ($example_persons_array as $fullnameAndJob){
-        $expd = explode(' ',$fullnameAndJob['fullname']);
-        $surname = $expd[0];
-        $name = $expd[1];
-        $patr = $expd[2];
-        echo "ФИО: " . $surname . " " . $name . " " . $patr . "<br>";
-        echo "<em>---------</em><br>";
-    };
+function getFullnameFromParts($surname, $name, $patronomyc){
+    $fullName = [$surname, $name, $patronomyc];
+    return implode(' ', $fullName);
 };
 
-getFullnameFromParts();
+function getShortName($fullName){
+    $sprtd = getPartsFromFullname($fullName);
+    $shortName = $sprtd["name"] . ' ' . mb_substr($seporated["surname"],0,1) . ".";
 
-function getShortName(){
-    global $example_persons_array;
-    foreach ($example_persons_array as $fullnameAndJob){
-        $expd = explode(' ',$fullnameAndJob['fullname']);
-        $surname = $expd[0];
-        $name = $expd[1];
-        echo $name . " " . mb_substr($surname, 0, 1) . "." . "<br>";
-    };
+    return $shortName;
 };
-
-getShortName();
 
 ?>
