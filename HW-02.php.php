@@ -76,7 +76,7 @@ function getGenderFromName($fullName){
 
     if (mb_substr($separated["surname"],-2,2) == "ва"){
         $gender = -1;
-    } elseif (mb_substr($seporated["surname"],-1,1) == "в"){
+    } elseif (mb_substr($separated["surname"],-1,1) == "в"){
         $gender = 1;
     } else {
         $gender = 0;
@@ -94,7 +94,7 @@ function getGenderFromName($fullName){
 
     if (mb_substr($separated["patronymic"],-3,3) == "вна"){
         $gender = -1;
-    } elseif (mb_substr($seporated["patronymic"],-2,2) == "ич"){
+    } elseif (mb_substr($separated["patronymic"],-2,2) == "ич"){
         $gender = 1;
     } else {
         $gender = 0;
